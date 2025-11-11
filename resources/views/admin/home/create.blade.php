@@ -11,7 +11,7 @@
     <form action="{{ route('homeadmin.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-2">
-            <label for="" class="form-label">Inage</label>
+            <label for="" class="form-label">Image</label>
             <input type="file" class="form-control" name="image" accept=".jpg,.png,.jpeg">
         </div>
         <div class="mb-2">

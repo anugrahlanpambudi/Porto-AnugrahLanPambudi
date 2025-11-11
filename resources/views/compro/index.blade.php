@@ -9,6 +9,18 @@
     <meta content="" name="description">
 
     @include('compro.inc.css')
+    <style>
+        .header-carousel .owl-carousel-item {
+            height: 600px;
+            position: relative;
+        }
+
+        .header-carousel .owl-carousel-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,36 +35,14 @@
 
 
     <!-- Navbar Start -->
-   @include('compro.inc.nav')
+    @include('compro.inc.nav')
     <!-- Navbar End -->
 
 
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="{{ asset('asset/img/carousel-1.jpg') }}" alt="">
-                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
-                    style="background: rgba(24, 29, 56, .7);">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Online Courses
-                                </h5>
-                                <h1 class="display-3 text-white animated slideInDown">The Best Online Learning Platform
-                                </h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed
-                                    stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus
-                                    eirmod elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
-                                    More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
-                                    Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @if ($homes->isEmpty())
             <div class="owl-carousel-item position-relative">
                 <img class="img-fluid" src="{{ asset('asset/img/carousel-2.jpg') }}" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
@@ -76,6 +66,33 @@
                     </div>
                 </div>
             </div>
+            @endif
+            @foreach ($homes as $v)
+                <div class="owl-carousel-item position-relative">
+                    <img class="img-fluid w-100" src="{{ asset('storage/' . $v->image) }}" alt="">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+                        style="background: rgba(24, 29, 56, .7);">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-sm-10 col-lg-8">
+                                    <h5 class="text-primary text-uppercase mb-3 animated slideInDown">
+                                        {{ $v->subtitle }}
+                                    </h5>
+                                    <h1 class="display-3 text-white animated slideInDown">{{ Str::title($v->title) }}
+                                    </h1>
+                                    <p class="fs-5 text-white mb-4 pb-2">{{Str::words(ucfirst($v->description), 20, '...') }}.</p>
+                                    <a href=""
+                                        class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read
+                                        More</a>
+                                    <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
+                                        Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
         </div>
     </div>
     <!-- Carousel End -->

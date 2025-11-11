@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
+use App\Models\Home;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('compro.index');
+    $homes = Home::orderBy('id', 'DESC')->limit(2)->get();
+    return view('compro.index', compact('homes'));
 })->name('home.index');
 
 Route::get('about', function () {
@@ -38,3 +41,9 @@ Route::get('dashboard', function () {
 Route::get('homeadmin', [HomeController::class, 'index'])->name('homeadmin.index');
 Route::get('homeadmin/create', [HomeController::class, 'create'])->name('homeadmin.create');
 Route::post('homeadmin/store', [HomeController::class, 'store'])->name('homeadmin.store');
+Route::get('homeadmin/edit/{id}', [HomeController::class, 'edit'])->name('homeadmin.edit');
+Route::put('homeadmin/update/{id}', [HomeController::class, 'update'])->name('homeadmin.update');
+Route::delete('homeadmin/destroy/{id}', [HomeController::class, 'destroy'])->name('homeadmin.destroy');
+
+Route::resource('aboutadmin', AboutController::class);
+
