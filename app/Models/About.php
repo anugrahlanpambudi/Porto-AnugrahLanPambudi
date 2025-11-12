@@ -14,4 +14,6 @@ class About extends Model
         'features',
         'created_at',
     ];
+
+    protected $casts = ['features' => 'array'];
 }

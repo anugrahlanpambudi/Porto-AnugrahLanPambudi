@@ -2,13 +2,13 @@
 @section('title', 'About Create')
 @section('content')
     @if ($errors->any())
-        @foreach ($errors->all() as $error )
+        @foreach ($errors->all() as $error)
             <h1>{{ $error }}</h1>
         @endforeach
 
     @endif
 
-    <form action="{{ route('homeadmin.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('aboutadmin.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-2">
             <label for="" class="form-label">Image</label>
@@ -20,32 +20,16 @@
         </div>
         <div class="mb-2">
             <label for="" class="form-label">Features</label>
-            <div id="featurewrap">
-                <div class="feature-item d-flex w-50">
-                    <input type="text" class="form-control feature" name="feature" placeholder="Fill in the feature section" id="">
-                    <button type="button" class="removeFeature btn btn-danger">Remove</button>
-                </div>
-            </div>
-            <button type="button" class="btn btn-primary" id="addFeature">Add</button>
+            <input type="text" class="form-control" data-role="tagsinput" name="features" placeholder="Fill in the feature section" >
+        </div>
+        <div class="mb-2">
+            <label for="" class="form-label">Description</label>
+            <input type="text" class="form-control" name="description" id="">
         </div>
 
-
         <button type="submit" class="btn btn-info">Add</button>
-        <a href="{{ url('homeadmin') }}" class="btn btn-secondary">Back</a>
+        <a href="{{ url('aboutadmin') }}" class="btn btn-secondary">Back</a>
     </form>
 
-    <script>
-        const wrapper = document.querySelector('#featurewrap');
-        const addBtn  = document.querySelector('#addFeature');
 
-        addBtn.addEventListener('click', function(){
-            const newInpt = document.createElement('div');
-            newInpt.classList.add('feature-item');
-            newInpt.innerHTML = `
-             <input type="text" class="form-control feature" placeholder="Fill in the feature section" >
-             <button type="button" class="removeFeature btn btn-danger">Remove</button>
-            `;
-            wrapper.appendChild(newInpt);
-        });
-    </script>
 @endsection

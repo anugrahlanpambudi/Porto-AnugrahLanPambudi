@@ -1,49 +1,53 @@
 @extends('admin.app')
-@section('title', 'About Menu')
+@section('title', 'Instructur Menu')
 @section('content')
     <div class="table-responsive">
         <div class="d-flex justify-content-end">
-            <a href="{{ route('aboutadmin.create') }}" class="btn btn-info my-2">Add</a>
+            <a href="{{ route('instructoradmin.create') }}" class="btn btn-info my-2">Add</a>
         </div>
         <table class="table table-bordered text-center">
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Social Media</th>
+                    <th>Name</th>
                     <th>Image</th>
-                    <th>Title</th>
-                    <th>Features</th>
+                    <th>Major</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($abouts as $index => $item)
-                    <tr>
+                @foreach ($instructors as $index => $ints)
+                    <tr></tr>
                         <td>{{ $index + 1 }}</td>
-                        <td><img src="{{ asset('storage/' . $item->image) }}" alt="" width="100" alt=""></td>
-                        <td>{{ $item->title }}</td>
                         <td>
                             <ul>
-                                @foreach ($item->features as $feature)
-                                    <li>{{ $feature }}</li>
+                                @foreach ($ints->socialmedia as $i)
+                                    <li>{{ $i }}</li>
                                 @endforeach
                             </ul>
                         </td>
+                        <td>{{ $ints->name }}</td>
+                        <td><img src="{{ asset('storage/' . $ints->photo) }}" alt="" width="100" alt=""></td>
+                        <td>{{ $ints->major }}</td>
                         <td>
-                            <a href="{{ route('aboutadmin.edit', $item->id) }}" class="btn btn-success">
+                            <a href="" class="btn btn-success">
                                 <i class="bi bi-pencil"></i> Edit
                             </a>
 
-                            <form class="d-inline" action="{{ route('aboutadmin.destroy', $item->id) }}" method="post"
-                                onsubmit="return confirm('Are you sure want delete this??')">
+                            <form class="d-inline" action="" method="POST"
+                                onsubmit="return confirm('Are you sure want to delete this?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">
                                     <i class="bi bi-trash"></i> Delete
                                 </button>
                             </form>
+
                         </td>
                     </tr>
                 @endforeach
+
             </tbody>
         </table>
 

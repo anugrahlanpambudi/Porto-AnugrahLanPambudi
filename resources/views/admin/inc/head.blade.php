@@ -29,3 +29,19 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{asset ('adm/assets/js/config.js') }}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .bootstrap-tagsinput{
+            width: 100%;
+            min-height: 45px;
+            padding: 6px;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+        .label-info{
+            background-color: rgb(144, 144, 223);
+            padding: 5px;
+        }
+    </style>

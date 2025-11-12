@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\instructorController;
+use App\Models\About;
 use App\Models\Home;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +13,8 @@ Route::get('/', function () {
 })->name('home.index');
 
 Route::get('about', function () {
-    return view('compro.about');
+    $about = About::orderBy('id','DESC')->first();
+    return view('compro.about', compact('about'));
 })->name('about.index');
 
 Route::get('courses', function () {
@@ -46,4 +49,5 @@ Route::put('homeadmin/update/{id}', [HomeController::class, 'update'])->name('ho
 Route::delete('homeadmin/destroy/{id}', [HomeController::class, 'destroy'])->name('homeadmin.destroy');
 
 Route::resource('aboutadmin', AboutController::class);
+Route::resource('instructoradmin', instructorController::class);
 
