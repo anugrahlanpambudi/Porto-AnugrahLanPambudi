@@ -10,6 +10,7 @@
                 <tr>
                     <th>No</th>
                     <th>Social Media</th>
+                    <th>Social Media URL</th>
                     <th>Name</th>
                     <th>Image</th>
                     <th>Major</th>
@@ -18,24 +19,36 @@
             </thead>
             <tbody>
                 @foreach ($instructors as $index => $ints)
-                    <tr></tr>
+                    <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>
                             <ul>
-                                @foreach ($ints->socialmedia as $i)
-                                    <li>{{ $i }}</li>
-                                @endforeach
+                                @if ($ints->socialmedia)
+                                    @foreach ($ints->socialmedia as $i)
+                                        <li>{{ $i }}</li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </td>
+                        <td>
+                            <ul>
+                                @if ($ints->sosmed_urls)
+                                    @foreach ($ints->sosmed_urls as $a)
+                                        <li>{{ $a }}</li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </td>
+
                         <td>{{ $ints->name }}</td>
                         <td><img src="{{ asset('storage/' . $ints->photo) }}" alt="" width="100" alt=""></td>
                         <td>{{ $ints->major }}</td>
                         <td>
-                            <a href="" class="btn btn-success">
+                            <a href="{{ route('instructoradmin.edit', $ints->id) }}" class="btn btn-success">
                                 <i class="bi bi-pencil"></i> Edit
                             </a>
 
-                            <form class="d-inline" action="" method="POST"
+                            <form class="d-inline" action="{{ route('instructoradmin.destroy', $ints->id) }}" method="POST"
                                 onsubmit="return confirm('Are you sure want to delete this?')">
                                 @csrf
                                 @method('DELETE')

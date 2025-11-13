@@ -15,12 +15,16 @@
             <input type="text" class="form-control" data-role="tagsinput" name="socialmedia" placeholder="Fill in the feature section" >
         </div>
         <div class="mb-2">
+            <label for="" class="form-label">Social Media Urls</label>
+            <input type="url" class="form-control" data-role="tagsinput" name="sosmed_urls" placeholder="Fill in the feature section" >
+        </div>
+        <div class="mb-2">
             <label for="" class="form-label">Name</label>
             <input type="text" class="form-control" name="name" id="">
         </div>
         <div class="mb-2">
             <label for="" class="form-label">Image</label>
-            <input type="file" class="form-control" name="image" accept=".jpg,.png,.jpeg">
+            <input type="file" class="form-control" name="photo" accept=".jpg,.png,.jpeg">
         </div>
         <div class="mb-2">
             <label for="" class="form-label">Major</label>
@@ -29,7 +33,7 @@
 
 
         <button type="submit" class="btn btn-info">Add</button>
-        <a href="" class="btn btn-secondary">Back</a>
+        <a href="{{ url('instructoradmin') }}" class="btn btn-secondary">Back</a>
     </form>
 
 

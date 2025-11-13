@@ -10,9 +10,11 @@ class Instructor extends Model
         'name',
         'socialmedia',
         'photo',
-        'major'
+        'major',
+        'sosmed_urls'
     ];
     protected $casts = [
         'socialmedia' => 'array', // Laravel otomatis akan menangani data ini sebagai array atau JSON
+        'sosmed_urls' => 'array', // Laravel otomatis akan menangani data ini sebagai array atau JSON
     ];
 }
