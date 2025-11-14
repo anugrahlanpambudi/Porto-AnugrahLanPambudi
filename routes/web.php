@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Contactcontroller;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\instructorController;
 use App\Models\About;
@@ -53,4 +55,11 @@ Route::delete('homeadmin/destroy/{id}', [HomeController::class, 'destroy'])->nam
 Route::resource('aboutadmin', AboutController::class);
 Route::resource('instructoradmin', instructorController::class);
 
+Route::post('contact/store', [Contactcontroller::class, 'store'])->name('contact.store');
+Route::get('contactadmin/index', [Contactcontroller::class, 'index'])->name('contactadmin.index');
+Route::post('contactadmin/reply/{id}', [Contactcontroller::class, 'reply'])->name('contactadmin.reply');
+
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
+Route::get('logout', [GoogleAuthController::class, 'logout'])->name('logout');
 

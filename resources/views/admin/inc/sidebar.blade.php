@@ -99,8 +99,8 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-fluid.html" class="menu-link">
-                    <div data-i18n="Fluid">Fluid</div>
+                  <a href="{{ route('contactadmin.index') }}" class="menu-link">
+                    <div data-i18n="Fluid">Contact Menu</div>
                   </a>
                 </li>
                 <li class="menu-item">

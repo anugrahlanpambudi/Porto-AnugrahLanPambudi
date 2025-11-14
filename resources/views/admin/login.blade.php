@@ -26,7 +26,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
@@ -147,6 +147,11 @@
                 </div>
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                </div>
+                <div class="mb-3">
+                   <a href="{{ route('google-auth') }}" class="btn btn-danger d-flex align-items-center justify-content-center w-100" type="submit">
+                    <i class="fab fa-google me-2"></i> Continue with Google
+                    </a>
                 </div>
               </form>
 
